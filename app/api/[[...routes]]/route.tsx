@@ -275,7 +275,7 @@ app.frame('/end', async (c) => {
       await delay(3000)
 
       const response = await axios.get(`https://api${process.env.CHAIN_ID == "84532" ? "-sepolia" : ""}.basescan.org/api?module=proxy&action=eth_getTransactionReceipt&txhash=${c.transactionId}&apikey=${process.env.BASE_SCAN_API_KEY}`)
-      console.log(response.data.result);
+
       tokenAddress = response.data.result.logs[0].address;
       const userAddress = response.data.result.from;
 
@@ -307,7 +307,7 @@ app.frame('/end', async (c) => {
   return c.res({
       image: (<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', backgroundImage: 'linear-gradient(to right, #014bad, #17101F)' }}>
       <h1 style={{ color: 'white', fontSize: '80px', margin: '0px' }}>{tokenAddress ? "token created!" : "token creation failed!"}</h1>
-      <p style={{ color: 'white', fontSize: '25px', margin: '0px' }}>{tokenAddress ? `token address: ${tokenAddress}` : "try again"}</p>
+      <p style={{ color: 'white', fontSize: '25px', margin: '0px' }}>{tokenAddress ? `add your token to your wallet with the address from basescan` : "try again"}</p>
       </div>),
       intents: tokenAddress ? [
       <Button.Link href="https://www.thesoftdao.com/">More by SOFT</Button.Link>,
