@@ -21,13 +21,13 @@ type State = {
 
 const app = new Frog<{ State: State }>({
   initialState: {
-    name: "",
+    name: "custom token",
     ticker: "CUSTOM",
     imageURL: "https://soft-pump-assets.s3.amazonaws.com/token.png",
-    description: "",
+    description: "no description provided",
     initialSupply: parseInt(process.env.DEFAULT_INITIAL_SUPPLY || '1000')
   },
-  // hub: neynar({ apiKey: process.env.NEYNAR_API_KEY || '' }),
+  hub: neynar({ apiKey: process.env.NEYNAR_API_KEY || '' }),
   assetsPath: '/',
   basePath: '/api',
 })
