@@ -51,6 +51,7 @@ app.frame('/home', (c) => {
       <Button.Link href="https://www.thesoftdao.com/">Learn More</Button.Link>,
       <Button action="/name">Begin</Button>
     ],
+    title: "Fundcaster by SOFT"
   })
 })
 
@@ -75,6 +76,7 @@ app.frame('/name', (c) => {
       <Button action="/home" value="back">Back</Button>,
       <Button action="/ticker" value="next">Next</Button>
       ],
+      title: "Fundcaster by SOFT"
   }) 
 })
 
@@ -104,6 +106,7 @@ app.frame('/ticker', (c) => {
       <Button action="/name" value="back">Back</Button>,
       <Button action="/image" value="next">Next</Button>
       ],
+      title: "Fundcaster by SOFT"
   })  
 })
 
@@ -139,6 +142,7 @@ app.frame('/image', (c) => {
       <Button action="/ticker" value="back">Back</Button>,
       <Button action="/description" value="next">Next</Button>
       ],
+      title: "Fundcaster by SOFT"
   })   
 })
 
@@ -180,7 +184,8 @@ app.frame('/description', async (c) => {
       <TextInput placeholder="(max. 16 characters)" />,
       <Button action="/image" value="back">Back</Button>,
       <Button action="/supply" value="next">Next</Button>
-      ]
+      ],
+      title: "Fundcaster by SOFT"
   })  
 })
 
@@ -208,7 +213,8 @@ app.frame('/supply', (c) => {
       <TextInput placeholder="(max. 1 billion)" />,
       <Button action="/description" value="back">Back</Button>,
       <Button action="/submit" value="next">Preview</Button>
-      ]
+      ],
+      title: "Fundcaster by SOFT"
   })  
 });
 
@@ -249,7 +255,8 @@ app.frame('/submit', (c) => {
       intents: [
       <Button action="/supply" value="back">Back</Button>,
       <Button.Transaction target="/create">Submit</Button.Transaction>
-      ]
+      ],
+      title: "Fundcaster by SOFT"
   })  
 });
 
@@ -316,7 +323,8 @@ app.frame('/end', async (c) => {
       ] : [
       <Button.Link href="https://www.thesoftdao.com/">More by SOFT</Button.Link>,
       <Button.Reset>Restart</Button.Reset>
-      ]
+      ],
+      title: "Fundcaster by SOFT"
   })  
 })
 
@@ -341,7 +349,8 @@ const displayError = (c: any, error: string) => {
       intents: [
       <Button.Link href="https://www.thesoftdao.com/">More by SOFT</Button.Link>,
       <Button.Reset>Restart</Button.Reset>
-      ]
+      ],
+      title: "Fundcaster by SOFT"
   })
 }
 
