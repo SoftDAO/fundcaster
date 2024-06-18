@@ -1,4 +1,4 @@
-/** @jsxImportSource frog/jsx */
+]/** @jsxImportSource frog/jsx */
 
 import { Button, Frog, TextInput } from 'frog'
 import { devtools } from 'frog/dev'
@@ -85,7 +85,7 @@ app.frame('/ticker', (c) => {
   const { buttonValue, inputText, deriveState } = c
   const state = deriveState(previousState => {
       // remove URL encoding from inputText
-      if (buttonValue === 'next' && inputText) previousState.name = decodeURIComponent(inputText.replace(" ", ""));
+      if (buttonValue === 'next' && inputText) previousState.name = decodeURIComponent(inputText);
   })
 
   return c.res({
