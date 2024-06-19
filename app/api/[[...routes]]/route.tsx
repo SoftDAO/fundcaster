@@ -8,6 +8,7 @@ import { createClient } from "@supabase/supabase-js";
 import { serveStatic } from "frog/serve-static";
 import axios from "axios";
 import { ABI } from "../../../constants/abi";
+import BigNumber from "bignumber.js";
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
@@ -27,7 +28,7 @@ const app = new Frog<{ State: State }>({
     description: "no description provided",
     initialSupply: parseInt(process.env.DEFAULT_INITIAL_SUPPLY || "1000"),
   },
-  hub: neynar({ apiKey: process.env.NEYNAR_API_KEY || "" }),
+  // hub: neynar({ apiKey: process.env.NEYNAR_API_KEY || "" }),
   assetsPath: "/",
   basePath: "/api",
 });
@@ -553,7 +554,7 @@ app.frame("/submit", (c) => {
           description: {state.description}
         </p>
         <p style={{ textAlign: "center", color: "white", fontSize: "30px" }}>
-          initial supply: {state.initialSupply}
+          initial supply: {state.initialSupply.toLocaleString("en-US")}
         </p>
         <div
           style={{
@@ -702,6 +703,10 @@ app.frame("/end", async (c) => {
 app.transaction("/create", async (c) => {
   const state = c.previousState;
 
+  const supply = new BigNumber(state.initialSupply).multipliedBy(
+    new BigNumber(10).pow(18)
+  );
+
   return c.contract({
     abi: ABI,
     chainId: `eip155:${process.env.CHAIN_ID}` as
@@ -716,7 +721,7 @@ app.transaction("/create", async (c) => {
     args: [
       state.name,
       state.ticker,
-      state.initialSupply * 10 ** 18,
+      supply.toFixed(),
       process.env.FEE_DEPOSIT_ADDRESS,
     ],
   });
