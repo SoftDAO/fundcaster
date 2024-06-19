@@ -291,7 +291,7 @@ app.frame("/image", (c) => {
           pick a logo for {state.ticker}
         </h1>
         <p style={{ textAlign: "center", color: "white", fontSize: "30px" }}>
-          or click "Next" to use the default image
+          enter or URL or click "Next" to use the default image
         </p>
         <div
           style={{
